@@ -1,0 +1,43 @@
+/* Custom styles for a space theme */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0A0A1A; /* Deep space dark blue */
+            color: #E0E0FF; /* Light, almost white text for contrast */
+            /* Updated: Replaced placeholder with an actual space background image */
+            background-image: url('https://images.unsplash.com/photo-1506703719100-a0d3c071707b?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+            background-size: cover;
+            background-attachment: fixed;
+            background-position: center;
+        }
+        .navbar-blur {
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            background-color: rgba(10, 10, 26, 0.7); /* Semi-transparent dark blue */
+        }
+        .card-gradient {
+            background: linear-gradient(135deg, #1A1A3A, #2A2A5A); /* Subtle gradient for cards */
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+        }
+        .button-glow {
+            background: linear-gradient(45deg, #8B5CF6, #EC4899); /* Purple to Pink gradient */
+            transition: all 0.3s ease;
+        }
+        .button-glow:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 15px rgba(139, 92, 246, 0.7); /* Subtle glow effect */
+        }
+        /* Custom scrollbar for a sleek look */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #1A1A3A;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #8B5CF6;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #EC4899;
+        }
