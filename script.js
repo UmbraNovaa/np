@@ -22,3 +22,7 @@
                 mobileMenu.classList.add('hidden');
             });
         });
+
+window.oncontextmenu = function () {
+   return false;
+}
