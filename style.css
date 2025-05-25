@@ -1,7 +1,7 @@
 /* Custom styles for a space theme */
 body {
     font-family: 'Inter', sans-serif;
-    background-color: #8a4825; /* Deep space dark blue */
+    background-color: #0A0A1A; /* Deep space dark blue */
     color: #E0E0FF; /* Light, almost white text for contrast */
     background-image: url('e5645cfdf39fb49e83ddbfdf75fdb822.jpg'); /* Assuming this image path is correct */
     background-size: cover;
