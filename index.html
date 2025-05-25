@@ -4,10 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>UMBRA Nova - Dev Panel</title>
+    <meta name="description" content="UMBRA Nova offers stargazing tours, educational workshops, and cutting-edge research in astronomy. Explore the universe with us!">
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css" >
-      <link rel="icon" type="image/x-icon" href="favicon-32x32.png">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/x-icon" href="favicon-32x32.png">
 </head>
 <body class="antialiased">
 
@@ -16,8 +17,8 @@
             <a href="#" class="text-3xl font-bold text-white tracking-wider rounded-lg p-2">UMBRA Nova</a>
             <div class="hidden md:flex space-x-8">
                 <a href="#home" class="text-white hover:text-purple-400 transition duration-300 rounded-md px-3 py-2">Home</a>
-                <a href="#about" class="text-white hover:text-purple-400 transition duration-300 rounded-md px-3 py-2"> Our Team </a>
-                <a href="#services" class="text-white hover:text-purple-400 transition duration-300 rounded-md px-3 py-2"> Join us </a>
+                <a href="#about" class="text-white hover:text-purple-400 transition duration-300 rounded-md px-3 py-2"> About </a>
+                <a href="#services" class="text-white hover:text-purple-400 transition duration-300 rounded-md px-3 py-2"> Services </a>
                 <a href="#gallery" class="text-white hover:text-purple-400 transition duration-300 rounded-md px-3 py-2">Gallery</a>
                 <a href="#contact" class="text-white hover:text-purple-400 transition duration-300 rounded-md px-3 py-2">Contact</a>
             </div>
@@ -29,17 +30,22 @@
                 </button>
             </div>
         </div>
-        <div id="mobile-menu" class="md:hidden hidden bg-gray-900 bg-opacity-90 mt-4 rounded-lg">
-            <a href="#home" class="block text-white px-4 py-3 hover:bg-gray-800 rounded-lg">Home</a>
-            <a href="#about" class="block text-white px-4 py-3 hover:bg-gray-800 rounded-lg">About</a>
-            <a href="#services" class="block text-white px-4 py-3 hover:bg-gray-800 rounded-lg">Services</a>
-            <a href="#gallery" class="block text-white px-4 py-3 hover:bg-gray-800 rounded-lg">Gallery</a>
-            <a href="#contact" class="block text-white px-4 py-3 hover:bg-gray-800 rounded-lg">Contact</a>
+        <div id="mobile-menu" class="md:hidden fixed top-0 -right-full h-full w-64 bg-gray-900 bg-opacity-95 shadow-lg pt-4 transition-all duration-300 ease-in-out z-20">
+            <div class="flex justify-end p-4">
+                <button id="mobile-menu-close-button" class="text-white focus:outline-none">
+                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </button>
+            </div>
+            <a href="#home" class="block text-white px-6 py-3 hover:bg-gray-800 rounded-lg">Home</a>
+            <a href="#about" class="block text-white px-6 py-3 hover:bg-gray-800 rounded-lg">About</a>
+            <a href="#services" class="block text-white px-6 py-3 hover:bg-gray-800 rounded-lg">Services</a>
+            <a href="#gallery" class="block text-white px-6 py-3 hover:bg-gray-800 rounded-lg">Gallery</a>
+            <a href="#contact" class="block text-white px-6 py-3 hover:bg-gray-800 rounded-lg">Contact</a>
         </div>
     </nav>
 
-
-    
     <section id="home" class="relative h-screen flex items-center justify-center text-center overflow-hidden pt-16">
         <div class="absolute inset-0 bg-black opacity-50"></div>
         <div class="relative z-10 p-8 max-w-4xl mx-auto rounded-xl">
@@ -55,55 +61,99 @@
         </div>
     </section>
 
-            <section id="about" class="py-20 px-4 bg-gradient-to-b from-[#0A0A1A] to-[#1A1A3A]">
+    <section id="about" class="py-20 px-4 bg-gradient-to-b from-[#0A0A1A] to-[#1A1A3A]">
         <div class="container mx-auto max-w-6xl">
             <h2 class="text-5xl font-bold text-center text-white mb-16">About UMBRA Nova</h2>
             <div class="flex flex-col md:flex-row items-center justify-between space-y-12 md:space-y-0 md:space-x-12">
                 <div class="md:w-1/2 card-gradient p-8 rounded-2xl shadow-xl">
                     <p class="text-lg leading-relaxed text-gray-300 mb-6">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem laudantium, aperiam fuga illum dolore modi optio accusamus eaque id repellendus minus doloremque odit unde omnis similique velit repudiandae corrupti magnam.
+                        UMBRA Nova is dedicated to fostering a deeper understanding and appreciation of astronomy. We believe that the wonders of the universe should be accessible to everyone, from curious beginners to seasoned enthusiasts. Our mission is to illuminate the cosmos, one discovery at a time.
                     </p>
                     <p class="text-lg leading-relaxed text-gray-300">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem laudantium, aperiam fuga illum dolore modi optio accusamus eaque id repellendus minus doloremque odit unde omnis similique velit repudiandae corrupti magnam.
+                        Through cutting-edge research, engaging educational programs, and breathtaking observational experiences, we strive to inspire the next generation of astronomers and space explorers. Join us on an unforgettable journey through the stars.
                     </p>
                 </div>
                 <div class="md:w-1/2">
-                    <img src="https://placehold.co/600x400/2A2A5A/E0E0FF?text=Cosmic+Vision" alt="Cosmic Vision" class="rounded-2xl shadow-2xl w-full h-auto object-cover transform hover:scale-105 transition duration-500">
+                    <img src="cosmicspace.jpg" alt="Cosmic Vision" class="rounded-2xl shadow-2xl w-full h-auto object-cover transform hover:scale-105 transition duration-500">
                 </div>
             </div>
         </div>
     </section>
-    
+
     <section id="services" class="py-20 px-4 bg-gradient-to-b from-[#1A1A3A] to-[#0A0A1A]">
         <div class="container mx-auto max-w-6xl">
             <h2 class="text-5xl font-bold text-center text-white mb-16">Our Services</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
                 <div class="card-gradient p-8 rounded-2xl shadow-xl text-center hover:scale-105 transition duration-300">
-                    <svg class="w-20 h-20 mx-auto mb-6 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path "></path>
-                    </svg>
+                    <img src="2733040.png" alt="Telescope icon for Stargazing Tours" class="w-24 h-24 mx-auto mb-6">
                     <h3 class="text-3xl font-semibold text-white mb-4">Stargazing Tours</h3>
                     <p class="text-lg text-gray-300">
                         Experience the night sky like never before with our guided stargazing tours. Discover constellations, planets, and distant galaxies.
                     </p>
                 </div>
                 <div class="card-gradient p-8 rounded-2xl shadow-xl text-center hover:scale-105 transition duration-300">
-                    <svg class="w-20 h-20 mx-auto mb-6 text-pink-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path ></path>
-                    </svg>
+                    <img src="workshop.png" alt="Graduation cap icon for Educational Workshops" class="w-24 h-24 mx-auto mb-6">
                     <h3 class="text-3xl font-semibold text-white mb-4">Educational Workshops</h3>
                     <p class="text-lg text-gray-300">
                         Dive deep into astronomical concepts with our interactive workshops for all ages and skill levels.
                     </p>
                 </div>
                 <div class="card-gradient p-8 rounded-2xl shadow-xl text-center hover:scale-105 transition duration-300">
-                    <svg class="w-20 h-20 mx-auto mb-6 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path ></path>
-                    </svg>
+                    <img src="rnd.png" alt="Atom icon for Research & Development" class="w-24 h-24 mx-auto mb-6">
                     <h3 class="text-3xl font-semibold text-white mb-4">Research & Development</h3>
                     <p class="text-lg text-gray-300">
                         Contributing to the scientific community through innovative research and technological advancements in astronomy.
                     </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="gallery" class="py-20 px-4 bg-gradient-to-b from-[#0A0A1A] to-[#1A1A3A]">
+        <div class="container mx-auto max-w-6xl">
+            <h2 class="text-5xl font-bold text-center text-white mb-16">Cosmic Gallery</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="card-gradient rounded-2xl overflow-hidden shadow-xl hover:scale-105 transition duration-300">
+                    <img src="842f84fac75b1770ff0c675475474da6.jpg" alt="Mystic Nebula" class="w-full h-64 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-2xl font-semibold text-white mb-2">Mystic Nebula</h3>
+                        <p class="text-gray-300">A breathtaking view of a distant stellar nursery.</p>
+                    </div>
+                </div>
+                <div class="card-gradient rounded-2xl overflow-hidden shadow-xl hover:scale-105 transition duration-300">
+                    <img src="spiral.jpg" alt="Spiral Galaxy" class="w-full h-64 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-2xl font-semibold text-white mb-2">Spiral Galaxy</h3>
+                        <p class="text-gray-300">The majestic arms of a spiral galaxy, billions of light-years away.</p>
+                    </div>
+                </div>
+                <div class="card-gradient rounded-2xl overflow-hidden shadow-xl hover:scale-105 transition duration-300">
+                    <img src="exop.jpg" alt="Exoplanet Surface" class="w-full h-64 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-2xl font-semibold text-white mb-2">Exoplanet Surface</h3>
+                        <p class="text-gray-300">An artist's rendition of a newly discovered exoplanet.</p>
+                    </div>
+                </div>
+                <div class="card-gradient rounded-2xl overflow-hidden shadow-xl hover:scale-105 transition duration-300">
+                    <img src="cluster.jpg" alt="Dazzling Star Cluster" class="w-full h-64 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-2xl font-semibold text-white mb-2">Dazzling Star Cluster</h3>
+                        <p class="text-gray-300">Thousands of stars bound together in a cosmic dance.</p>
+                    </div>
+                </div>
+                <div class="card-gradient rounded-2xl overflow-hidden shadow-xl hover:scale-105 transition duration-300">
+                    <img src="Aurora.jpg" alt="Celestial Aurora" class="w-full h-64 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-2xl font-semibold text-white mb-2">Celestial Aurora</h3>
+                        <p class="text-gray-300">The ethereal glow of an aurora, a natural light show.</p>
+                    </div>
+                </div>
+                <div class="card-gradient rounded-2xl overflow-hidden shadow-xl hover:scale-105 transition duration-300">
+                    <img src="horizon.jpg" alt="The Event Horizon" class="w-full h-64 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-2xl font-semibold text-white mb-2">The Event Horizon</h3>
+                        <p class="text-gray-300">Visualizing the enigmatic boundary of a black hole.</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -116,7 +166,7 @@
             Have questions about the universe or our services? Reach out to us!
         </p>
         <div class="card-gradient p-8 rounded-2xl shadow-xl">
-            <form action="#" method="post" class="space-y-6">
+            <form action="https://formsubmit.co/justinach85@email.com" method="POST" class="space-y-6">
                 <div>
                     <input type="text" name="name" placeholder="Your Name" class="w-full p-4 rounded-lg bg-gray-800 text-white border border-gray-700 focus:border-purple-500 focus:ring focus:ring-purple-500 focus:ring-opacity-50 transition duration-300" required>
                 </div>
@@ -134,9 +184,20 @@
     </div>
 </section>
 
+<footer class="bg-gray-900 bg-opacity-80 text-gray-400 py-8 text-center rounded-t-lg">
+    <div class="container mx-auto">
+        <div class="mb-4 flex justify-center items-center space-x-6">
+            <a href="https://www.instagram.com/umbranova.np/" target="_blank" class="hover:opacity-75 transition duration-300">
+                <img src="Instagram-Logo.wine.png" alt="UMBRA Nova Instagram" class="w-10 h-10">
+            </a>
+            <a href="https://www.tiktok.com/@umbranova.np?_t=ZS-8wdxn5OvKG0&_r=1" target="_blank" class="hover:opacity-75 transition duration-300">
+                <img src="tiktok-vse5tpq3thoiuk9tdhv82p.png" alt="UMBRA Nova TikTok" class="w-9 h-9">
+            </a>
+        </div>
+        <p>&copy; 2025 UMBRA Nova. All rights reserved. Designed for cosmic exploration.</p>
+    </div>
+</footer>
 
-
-    
 <script type="text/javascript" src="script.js"></script>
 </body>
 </html>
