@@ -58,3 +58,30 @@ document.addEventListener('DOMContentLoaded', function() {
         }, 5000);
     }
 });
+
+document.addEventListener('DOMContentLoaded', () => {
+    const form = document.getElementById('contactForm');
+    const confirmation = document.getElementById('confirmationMessage');
+
+    form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        const formData = new FormData(form);
+        const action = "https://formsubmit.co/1859faba437acbab8d97a8240e792cdc";
+
+        const response = await fetch(action, {
+            method: 'POST',
+            body: formData
+        });
+
+        if (response.ok) {
+            form.reset();
+            confirmation.classList.remove('hidden');
+        } else {
+            confirmation.textContent = "❌ Failed to send message. Try again.";
+            confirmation.classList.remove('hidden');
+            confirmation.classList.replace('text-green-400', 'text-red-400');
+        }
+    });
+});
+
