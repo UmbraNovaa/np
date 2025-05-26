@@ -11,7 +11,7 @@ body {
 .navbar-blur {
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
-    background-color: rgb(242,216,169); /* Semi-transparent dark blue */
+    background-color: rgba(10, 10, 26, 0.7); /* Semi-transparent dark blue */
 }
 .card-gradient {
     background: linear-gradient(135deg, #1A1A3A, #2A2A5A); /* Subtle gradient for cards */
