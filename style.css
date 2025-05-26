@@ -1,31 +1,31 @@
-/* Custom styles for a space theme */
+
 body {
     font-family: 'Inter', sans-serif;
-    background-color: #0A0A1A; /* Deep space dark blue */
-    color: #E0E0FF; /* Light, almost white text for contrast */
-    background-image: url('e5645cfdf39fb49e83ddbfdf75fdb822.jpg'); /* Assuming this image path is correct */
+    background-color: #0A0A1A; 
+    color: #E0E0FF; 
+    background-image: url('e5645cfdf39fb49e83ddbfdf75fdb822.jpg'); 
     background-size: cover;
-    background-attachment: fixed; /* Creates subtle parallax effect */
+    background-attachment: fixed; 
     background-position: center;
 }
 .navbar-blur {
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
-    background-color: rgba(10, 10, 26, 0.7); /* Semi-transparent dark blue */
+    background-color: rgba(10, 10, 26, 0.7); 
 }
 .card-gradient {
-    background: linear-gradient(135deg, #1A1A3A, #2A2A5A); /* Subtle gradient for cards */
+    background: linear-gradient(135deg, #1A1A3A, #2A2A5A); 
     box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
 }
 .button-glow {
-    background: linear-gradient(45deg, #8B5CF6, #EC4899); /* Purple to Pink gradient */
+    background: linear-gradient(45deg, #8B5CF6, #EC4899); 
     transition: all 0.3s ease;
 }
 .button-glow:hover {
     transform: translateY(-2px);
-    box-shadow: 0 0 15px rgba(139, 92, 246, 0.7); /* Subtle glow effect */
+    box-shadow: 0 0 15px rgba(139, 92, 246, 0.7); 
 }
-/* Custom scrollbar for a sleek look */
+
 ::-webkit-scrollbar {
     width: 8px;
 }
