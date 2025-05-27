@@ -14,7 +14,7 @@
           background-color: #0A0A1A;
           color: #E0E0FF;
           margin: 0;
-          overflow-x: hidden; /* Prevent horizontal scroll from animations */
+          overflow-x: hidden; 
       }
       .navbar-blur {
           backdrop-filter: blur(10px);
@@ -66,17 +66,17 @@
       ::-webkit-scrollbar-thumb:hover {
           background: #EC4899;
       }
-      /* Nebula background container */
+      
       #home-bg {
           position: fixed;
           inset: 0;
           background: url('https://images.unsplash.com/photo-1462331940025-496dfbfc7564?auto=format&fit=crop&w=1470&q=80') center center / cover no-repeat;
           filter: brightness(0.5);
-          z-index: -2; /* Lower than parallax stars */
+          z-index: -2; 
           will-change: transform;
       }
 
-      /* Parallax Stars */
+    
       .parallax-stars {
           position: fixed;
           inset: 0;
@@ -96,7 +96,7 @@
           50% { opacity: 1; }
       }
 
-      /* Fade-in effect for elements/boxes */
+      
       .fade-in-element {
         opacity: 0;
         transform: translateY(20px);
@@ -107,14 +107,14 @@
         transform: translateY(0);
       }
 
-      /* Custom Entrance Animations */
+      
       @keyframes slide-in-top {
           from { opacity: 0; transform: translateY(-50px); }
           to { opacity: 1; transform: translateY(0); }
       }
       .animate-slide-in-top {
           animation: slide-in-top 1s ease-out forwards;
-          opacity: 0; /* Hidden by default */
+          opacity: 0;
       }
 
       @keyframes fade-in-up {
@@ -170,7 +170,7 @@
       .animate-zoom-in.delay-200 { animation-delay: 0.2s; }
       .animate-zoom-in.delay-300 { animation-delay: 0.3s; }
 
-      /* Hero section animations */
+      
       #home h1 {
           animation: text-glow 2s infinite alternate;
       }
@@ -179,7 +179,7 @@
           to { text-shadow: 0 0 20px rgba(139, 92, 246, 1), 0 0 30px rgba(236, 72, 153, 0.7); }
       }
 
-      /* Card hover effects */
+     
       .card-gradient:hover {
           transform: translateY(-5px) scale(1.02);
           box-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.5);
@@ -192,7 +192,7 @@
           transform: scale(1.08);
       }
 
-      /* Service icons pulse */
+      
       #services .card-gradient img {
           animation: icon-pulse 2s infinite ease-in-out;
       }
@@ -203,7 +203,7 @@
 
 
 
-      /* Event section image animation */
+      
       #upcoming-events img {
           animation: image-float 4s ease-in-out infinite alternate;
       }
@@ -212,17 +212,17 @@
           100% { transform: translateY(-10px); }
       }
 
-      /* Form input focus glow */
+     
       #contact input:focus,
       #contact textarea:focus {
           box-shadow: 0 0 10px rgba(139, 92, 246, 0.8);
           outline: none;
       }
 
-      /* Mobile menu slide-in/out */
+      
       #mobile-menu {
           transition: transform 0.5s ease-in-out;
-          transform: translateX(100%); /* Start hidden */
+          transform: translateX(100%); 
       }
       #mobile-menu.right-0 {
           transform: translateX(0);
@@ -455,7 +455,7 @@
     </footer>
 
     <script>
-      // Smooth scrolling for nav links
+      
       document.querySelectorAll('a[href^="#"]').forEach(anchor => {
           anchor.addEventListener('click', function (e) {
               e.preventDefault();
@@ -469,7 +469,7 @@
           });
       });
 
-      // Mobile menu toggle
+    
       const menuButton = document.getElementById('mobile-menu-button');
       const mobileMenu = document.getElementById('mobile-menu');
       const mobileMenuCloseButton = document.getElementById('mobile-menu-close-button');
@@ -491,12 +491,12 @@
           });
       });
 
-      // Disable right-click context menu
+     
       window.oncontextmenu = function () {
           return false;
       };
 
-      // Intersection Observer for fade-in animations on elements/boxes
+      
       document.addEventListener('DOMContentLoaded', () => {
           const faders = document.querySelectorAll('.fade-in-element');
           const appearOptions = { threshold: 0.1, rootMargin: '0px 0px -60px 0px' };
@@ -511,7 +511,7 @@
 
           faders.forEach(fader => observer.observe(fader));
 
-          // Contact form submission handling
+         
           const form = document.querySelector('form[action^="https://formsubmit.co/"]');
           const confirmation = document.getElementById('confirmationMessage');
 
@@ -543,11 +543,11 @@
           for (let i = 0; i < numberOfStars; i++) {
               const star = document.createElement('div');
               star.classList.add('star');
-              const size = Math.random() * 3 + 1; // 1px to 4px
-              const x = Math.random() * 100; // 0% to 100% width
-              const y = Math.random() * 100; // 0% to 100% height
-              const delay = Math.random() * 4; // 0s to 4s animation delay
-              const duration = 3 + Math.random() * 5; // 3s to 8s animation duration
+              const size = Math.random() * 3 + 1;
+              const x = Math.random() * 100;
+              const y = Math.random() * 100; 
+              const delay = Math.random() * 4; 
+              const duration = 3 + Math.random() * 5; 
 
               star.style.width = `${size}px`;
               star.style.height = `${size}px`;
@@ -555,16 +555,16 @@
               star.style.top = `${y}vh`;
               star.style.animationDelay = `${delay}s`;
               star.style.animationDuration = `${duration}s`;
-              star.style.zIndex = Math.floor(Math.random() * 5) - 3; // Layers for subtle parallax
+              star.style.zIndex = Math.floor(Math.random() * 5) - 3; 
               parallaxStarsContainer.appendChild(star);
           }
 
-          // Parallax effect for stars on scroll
+         
           window.addEventListener('scroll', () => {
               const scrolled = window.pageYOffset;
               document.querySelectorAll('.star').forEach(star => {
                   const zIndex = parseInt(star.style.zIndex);
-                  const speed = (zIndex + 3) * 0.1; // Adjust speed based on z-index
+                  const speed = (zIndex + 3) * 0.1; 
                   star.style.transform = `translateY(-${scrolled * speed}px)`;
               });
           });
