@@ -1,61 +1,288 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>UMBRA Nova </title>
-    <meta name="description" content="UMBRA Nova offers stargazing tours, educational workshops, and cutting-edge research in astronomy. Explore the universe with us!">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>UMBRA Nova - Explore the Cosmos</title>
+    <meta name="description" content="UMBRA Nova offers stargazing tours, educational workshops, and cutting-edge research in astronomy. Explore the universe with us!" />
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
-    <link rel="icon" type="image/x-icon" href="favicon-32x32.png">
-</head>
-<body class="antialiased">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&amp;display=swap" rel="stylesheet" />
+    <link rel="icon" type="image/x-icon" href="image-removebg-preview.png">
+    <style>
+      body {
+          font-family: 'Inter', sans-serif;
+          background-color: #0A0A1A;
+          color: #E0E0FF;
+          margin: 0;
+          overflow-x: hidden; /* Prevent horizontal scroll from animations */
+      }
+      .navbar-blur {
+          backdrop-filter: blur(10px);
+          -webkit-backdrop-filter: blur(10px);
+          background-color: rgba(10, 10, 26, 0.7);
+      }
+      .card-gradient {
+          background: linear-gradient(135deg, #1A1A3A, #2A2A5A);
+          box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+      }
+      .button-glow {
+          background: linear-gradient(45deg, #8B5CF6, #EC4899);
+          transition: all 0.3s ease;
+          position: relative;
+          overflow: hidden;
+          z-index: 1;
+      }
+      .button-glow:hover {
+          transform: translateY(-2px);
+          box-shadow: 0 0 20px rgba(139, 92, 246, 0.9);
+      }
+      .button-glow::before {
+          content: '';
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          width: 300%;
+          height: 300%;
+          background: rgba(255, 255, 255, 0.15);
+          border-radius: 50%;
+          transition: all 0.7s ease-out;
+          transform: translate(-50%, -50%) scale(0);
+          z-index: -1;
+      }
+      .button-glow:hover::before {
+          transform: translate(-50%, -50%) scale(1);
+      }
+      ::-webkit-scrollbar {
+          width: 8px;
+      }
+      ::-webkit-scrollbar-track {
+          background: #1A1A3A;
+          border-radius: 10px;
+      }
+      ::-webkit-scrollbar-thumb {
+          background: #8B5CF6;
+          border-radius: 10px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+          background: #EC4899;
+      }
+      /* Nebula background container */
+      #home-bg {
+          position: fixed;
+          inset: 0;
+          background: url('https://images.unsplash.com/photo-1462331940025-496dfbfc7564?auto=format&fit=crop&w=1470&q=80') center center / cover no-repeat;
+          filter: brightness(0.5);
+          z-index: -2; /* Lower than parallax stars */
+          will-change: transform;
+      }
 
-    <nav class="navbar-blur p-4 fixed w-full z-10 top-0 rounded-b-lg">
+      /* Parallax Stars */
+      .parallax-stars {
+          position: fixed;
+          inset: 0;
+          z-index: -1;
+          pointer-events: none;
+      }
+      .star {
+          position: absolute;
+          background-color: rgba(255, 255, 255, 0.8);
+          border-radius: 50%;
+          opacity: 0;
+          animation: twinkle 4s infinite ease-in-out forwards;
+      }
+
+      @keyframes twinkle {
+          0%, 100% { opacity: 0; }
+          50% { opacity: 1; }
+      }
+
+      /* Fade-in effect for elements/boxes */
+      .fade-in-element {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.8s ease, transform 0.8s ease;
+      }
+      .fade-in-element.show {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* Custom Entrance Animations */
+      @keyframes slide-in-top {
+          from { opacity: 0; transform: translateY(-50px); }
+          to { opacity: 1; transform: translateY(0); }
+      }
+      .animate-slide-in-top {
+          animation: slide-in-top 1s ease-out forwards;
+          opacity: 0; /* Hidden by default */
+      }
+
+      @keyframes fade-in-up {
+          from { opacity: 0; transform: translateY(20px); }
+          to { opacity: 1; transform: translateY(0); }
+      }
+      .animate-fade-in-up {
+          animation: fade-in-up 1s ease-out forwards;
+          opacity: 0;
+      }
+      .animate-fade-in-up.delay-200 { animation-delay: 0.2s; }
+      .animate-fade-in-up.delay-400 { animation-delay: 0.4s; }
+
+      @keyframes bounce-in {
+          0% { opacity: 0; transform: scale(0.3); }
+          50% { opacity: 1; transform: scale(1.05); }
+          70% { transform: scale(0.9); }
+          100% { transform: scale(1); }
+      }
+      .animate-bounce-in {
+          animation: bounce-in 1s ease-out forwards;
+          opacity: 0;
+      }
+      .animate-bounce-in.delay-400 { animation-delay: 0.4s; }
+
+      @keyframes fade-in-left {
+          from { opacity: 0; transform: translateX(-50px); }
+          to { opacity: 1; transform: translateX(0); }
+      }
+      .animate-fade-in-left {
+          animation: fade-in-left 1s ease-out forwards;
+          opacity: 0;
+      }
+
+      @keyframes fade-in-right {
+          from { opacity: 0; transform: translateX(50px); }
+          to { opacity: 1; transform: translateX(0); }
+      }
+      .animate-fade-in-right {
+          animation: fade-in-right 1s ease-out forwards;
+          opacity: 0;
+      }
+
+      @keyframes zoom-in {
+          from { opacity: 0; transform: scale(0.8); }
+          to { opacity: 1; transform: scale(1); }
+      }
+      .animate-zoom-in {
+          animation: zoom-in 1s ease-out forwards;
+          opacity: 0;
+      }
+      .animate-zoom-in.delay-100 { animation-delay: 0.1s; }
+      .animate-zoom-in.delay-200 { animation-delay: 0.2s; }
+      .animate-zoom-in.delay-300 { animation-delay: 0.3s; }
+
+      /* Hero section animations */
+      #home h1 {
+          animation: text-glow 2s infinite alternate;
+      }
+      @keyframes text-glow {
+          from { text-shadow: 0 0 10px rgba(139, 92, 246, 0.5); }
+          to { text-shadow: 0 0 20px rgba(139, 92, 246, 1), 0 0 30px rgba(236, 72, 153, 0.7); }
+      }
+
+      /* Card hover effects */
+      .card-gradient:hover {
+          transform: translateY(-5px) scale(1.02);
+          box-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.5);
+          transition: all 0.4s ease-in-out;
+      }
+      .card-gradient img {
+          transition: transform 0.4s ease-in-out;
+      }
+      .card-gradient:hover img {
+          transform: scale(1.08);
+      }
+
+      /* Service icons pulse */
+      #services .card-gradient img {
+          animation: icon-pulse 2s infinite ease-in-out;
+      }
+      @keyframes icon-pulse {
+          0%, 100% { transform: scale(1); }
+          50% { transform: scale(1.05); }
+      }
+
+
+
+      /* Event section image animation */
+      #upcoming-events img {
+          animation: image-float 4s ease-in-out infinite alternate;
+      }
+      @keyframes image-float {
+          0% { transform: translateY(0); }
+          100% { transform: translateY(-10px); }
+      }
+
+      /* Form input focus glow */
+      #contact input:focus,
+      #contact textarea:focus {
+          box-shadow: 0 0 10px rgba(139, 92, 246, 0.8);
+          outline: none;
+      }
+
+      /* Mobile menu slide-in/out */
+      #mobile-menu {
+          transition: transform 0.5s ease-in-out;
+          transform: translateX(100%); /* Start hidden */
+      }
+      #mobile-menu.right-0 {
+          transform: translateX(0);
+      }
+      #mobile-menu.-right-full {
+          transform: translateX(100%);
+      }
+    </style>
+</head>
+<body class="antialiased relative">
+
+    <nav class="navbar-blur p-4 fixed w-full z-20 top-0 rounded-b-lg ">
         <div class="container mx-auto flex justify-between items-center">
-            <a href="#" class="text-3xl font-bold text-white tracking-wider rounded-lg p-2">UMBRA Nova</a>
+            <a href="#" class="text-3xl font-bold text-white tracking-wider rounded-lg p-2 transition duration-300 hover:text-purple-300 hover:scale-105">UMBRA Nova</a>
             <div class="hidden md:flex space-x-8">
                 <a href="#home" class="text-white hover:text-purple-400 transition duration-300 rounded-md px-3 py-2">Home</a>
-                <a href="#about" class="text-white hover:text-purple-400 transition duration-300 rounded-md px-3 py-2"> About </a>
-                <a href="#services" class="text-white hover:text-purple-400 transition duration-300 rounded-md px-3 py-2"> Services </a>
-                <a href="#gallery" class="text-white hover:text-purple-400 transition duration-300 rounded-md px-3 py-2">Gallery</a>
+                <a href="#about" class="text-white hover:text-purple-400 transition duration-300 rounded-md px-3 py-2">About</a>
+                <a href="#services" class="text-white hover:text-purple-400 transition duration-300 rounded-md px-3 py-2">Services</a>
+                <a href="#team" class="text-white hover:text-purple-400 transition duration-300 rounded-md px-3 py-2">Our Team</a>
+                <a href="#upcoming-events" class="text-white hover:text-purple-400 transition duration-300 rounded-md px-3 py-2">Events</a>
                 <a href="#contact" class="text-white hover:text-purple-400 transition duration-300 rounded-md px-3 py-2">Contact</a>
             </div>
             <div class="md:hidden">
-                <button id="mobile-menu-button" class="text-white focus:outline-none">
+                <button id="mobile-menu-button" class="text-white focus:outline-none p-2 rounded-md hover:bg-gray-700 transition duration-300">
                     <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
                     </svg>
                 </button>
             </div>
         </div>
-        <div id="mobile-menu" class="md:hidden fixed top-0 -right-full h-full w-64 bg-gray-900 bg-opacity-95 shadow-lg pt-4 transition-all duration-300 ease-in-out z-20">
+        <div id="mobile-menu" class="md:hidden fixed top-0 -right-full h-full w-64 bg-gray-900 bg-opacity-95 shadow-lg pt-4 z-30">
             <div class="flex justify-end p-4">
-                <button id="mobile-menu-close-button" class="text-white focus:outline-none">
+                <button id="mobile-menu-close-button" class="text-white focus:outline-none p-2 rounded-md hover:bg-gray-800 transition duration-300">
                     <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
                     </svg>
                 </button>
             </div>
-            <a href="#home" class="block text-white px-6 py-3 hover:bg-gray-800 rounded-lg">Home</a>
-            <a href="#about" class="block text-white px-6 py-3 hover:bg-gray-800 rounded-lg">About</a>
-            <a href="#services" class="block text-white px-6 py-3 hover:bg-gray-800 rounded-lg">Services</a>
-            <a href="#gallery" class="block text-white px-6 py-3 hover:bg-gray-800 rounded-lg">Gallery</a>
-            <a href="#contact" class="block text-white px-6 py-3 hover:bg-gray-800 rounded-lg">Contact</a>
+            <a href="#home" class="block text-white px-6 py-3 hover:bg-gray-800 rounded-lg transition duration-300">Home</a>
+            <a href="#about" class="block text-white px-6 py-3 hover:bg-gray-800 rounded-lg transition duration-300">About</a>
+            <a href="#services" class="block text-white px-6 py-3 hover:bg-gray-800 rounded-lg transition duration-300">Services</a>
+            <a href="#team" class="block text-white px-6 py-3 hover:bg-gray-800 rounded-lg transition duration-300">Our Team</a>
+            <a href="#upcoming-events" class="block text-white px-6 py-3 hover:bg-gray-800 rounded-lg transition duration-300">Events</a>
+            <a href="#contact" class="block text-white px-6 py-3 hover:bg-gray-800 rounded-lg transition duration-300">Contact</a>
         </div>
     </nav>
 
+    <div id="home-bg" aria-hidden="true"></div>
+    <div class="parallax-stars" aria-hidden="true"></div>
+
+
     <section id="home" class="relative h-screen flex items-center justify-center text-center overflow-hidden pt-16">
-        <div class="absolute inset-0 bg-black opacity-50"></div>
-        <div class="relative z-10 p-8 max-w-4xl mx-auto rounded-xl">
-            <h1 class="text-6xl md:text-8xl font-extrabold text-white leading-tight mb-6 animate-pulse">
+        <div class="">
+            <h1 class="text-6xl md:text-8xl font-extrabold text-white leading-tight mb-6 select-none">
                 UMBRA Nova
             </h1>
-            <p class="text-xl md:text-2xl text-gray-300 mb-10 leading-relaxed">
+            <p class="text-xl md:text-2xl text-gray-300 mb-10 leading-relaxed max-w-3xl mx-auto animate-fade-in-up delay-200">
                 Journey through the cosmos and unravel the mysteries of the universe.
             </p>
-            <a href="#services" class="button-glow text-white font-semibold py-4 px-10 rounded-full text-lg shadow-lg">
+            <a href="#services" class="button-glow text-white font-semibold py-4 px-10 rounded-full text-lg shadow-lg inline-block ">
                 Explore Our Universe
             </a>
         </div>
@@ -63,9 +290,9 @@
 
     <section id="about" class="py-20 px-4 bg-gradient-to-b from-[#0A0A1A] to-[#1A1A3A]">
         <div class="container mx-auto max-w-6xl">
-            <h2 class="text-5xl font-bold text-center text-white mb-16">About UMBRA Nova</h2>
+            <h2 class="text-5xl font-bold text-center text-white mb-16 animate-slide-in-top fade-in-element">About UMBRA Nova</h2>
             <div class="flex flex-col md:flex-row items-center justify-between space-y-12 md:space-y-0 md:space-x-12">
-                <div class="md:w-1/2 card-gradient p-8 rounded-2xl shadow-xl">
+                <div class="md:w-1/2 card-gradient p-8 rounded-2xl shadow-xl animate-fade-in-left fade-in-element">
                     <p class="text-lg leading-relaxed text-gray-300 mb-6">
                         UMBRA Nova is dedicated to fostering a deeper understanding and appreciation of astronomy. We believe that the wonders of the universe should be accessible to everyone, from curious beginners to seasoned enthusiasts. Our mission is to illuminate the cosmos, one discovery at a time.
                     </p>
@@ -73,8 +300,8 @@
                         Through cutting-edge research, engaging educational programs, and breathtaking observational experiences, we strive to inspire the next generation of astronomers and space explorers. Join us on an unforgettable journey through the stars.
                     </p>
                 </div>
-                <div class="md:w-1/2">
-                    <img src="cosmicspace.jpg" alt="Cosmic Vision" class="rounded-2xl shadow-2xl w-full h-auto object-cover transform hover:scale-105 transition duration-500">
+                <div class="md:w-1/2 animate-fade-in-right fade-in-element">
+                    <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&amp;w=800&amp;q=80" alt="Cosmic Vision" class="rounded-2xl shadow-2xl w-full h-auto object-cover" />
                 </div>
             </div>
         </div>
@@ -82,24 +309,24 @@
 
     <section id="services" class="py-20 px-4 bg-gradient-to-b from-[#1A1A3A] to-[#0A0A1A]">
         <div class="container mx-auto max-w-6xl">
-            <h2 class="text-5xl font-bold text-center text-white mb-16">Our Services</h2>
+            <h2 class="text-5xl font-bold text-center text-white mb-16 animate-slide-in-top fade-in-element">Our Services</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
-                <div class="card-gradient p-8 rounded-2xl shadow-xl text-center hover:scale-105 transition duration-300">
-                    <img src="2733040.png" alt="Telescope icon for Stargazing Tours" class="w-24 h-24 mx-auto mb-6">
+                <div class="card-gradient p-8 rounded-2xl shadow-xl text-center animate-zoom-in delay-100 fade-in-element">
+                    <img src="https://cdn-icons-png.flaticon.com/512/3405/3405912.png" alt="Telescope icon for Stargazing Tours" class="w-24 h-24 mx-auto mb-6 transition duration-300 hover:scale-110" />
                     <h3 class="text-3xl font-semibold text-white mb-4">Stargazing Tours</h3>
                     <p class="text-lg text-gray-300">
                         Experience the night sky like never before with our guided stargazing tours. Discover constellations, planets, and distant galaxies.
                     </p>
                 </div>
-                <div class="card-gradient p-8 rounded-2xl shadow-xl text-center hover:scale-105 transition duration-300">
-                    <img src="workshop.png" alt="Graduation cap icon for Educational Workshops" class="w-24 h-24 mx-auto mb-6">
+                <div class="card-gradient p-8 rounded-2xl shadow-xl text-center animate-zoom-in delay-200 fade-in-element">
+                    <img src="https://cdn-icons-png.flaticon.com/512/545/545682.png" alt="Graduation cap icon for Educational Workshops" class="w-24 h-24 mx-auto mb-6 transition duration-300 hover:scale-110" />
                     <h3 class="text-3xl font-semibold text-white mb-4">Educational Workshops</h3>
                     <p class="text-lg text-gray-300">
                         Dive deep into astronomical concepts with our interactive workshops for all ages and skill levels.
                     </p>
                 </div>
-                <div class="card-gradient p-8 rounded-2xl shadow-xl text-center hover:scale-105 transition duration-300">
-                    <img src="rnd.png" alt="Atom icon for Research & Development" class="w-24 h-24 mx-auto mb-6">
+                <div class="card-gradient p-8 rounded-2xl shadow-xl text-center animate-zoom-in delay-300 fade-in-element">
+                    <img src="https://cdn-icons-png.flaticon.com/512/2913/2913464.png" alt="Atom icon for Research & Development" class="w-24 h-24 mx-auto mb-6 transition duration-300 hover:scale-110" />
                     <h3 class="text-3xl font-semibold text-white mb-4">Research & Development</h3>
                     <p class="text-lg text-gray-300">
                         Contributing to the scientific community through innovative research and technological advancements in astronomy.
@@ -109,99 +336,239 @@
         </div>
     </section>
 
-    <section id="gallery" class="py-20 px-4 bg-gradient-to-b from-[#0A0A1A] to-[#1A1A3A]">
+    <section id="team" class="py-20 px-4 bg-gradient-to-b from-[#0A0A1A] to-[#1A1A3A]">
         <div class="container mx-auto max-w-6xl">
-            <h2 class="text-5xl font-bold text-center text-white mb-16">Cosmic Gallery</h2>
+            <h2 class="text-5xl font-bold text-center text-white mb-16 animate-slide-in-top fade-in-element">Our Team</h2>
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div class="card-gradient rounded-2xl overflow-hidden shadow-xl hover:scale-105 transition duration-300">
-                    <img src="842f84fac75b1770ff0c675475474da6.jpg" alt="Mystic Nebula" class="w-full h-64 object-cover">
+                <div class="card-gradient rounded-2xl overflow-hidden shadow-xl animate-fade-in-up delay-100 fade-in-element">
+                    <img src="#" alt="Veida Joshi" class="w-full h-64 object-cover" />
                     <div class="p-6">
-                        <h3 class="text-2xl font-semibold text-white mb-2">Mystic Nebula</h3>
-                        <p class="text-gray-300">A breathtaking view of a distant stellar nursery.</p>
+                        <h3 class="text-2xl font-semibold text-white mb-2">Veida Joshi</h3>
+                        <p class="text-gray-300">-Dept. Head</p>
                     </div>
                 </div>
-                <div class="card-gradient rounded-2xl overflow-hidden shadow-xl hover:scale-105 transition duration-300">
-                    <img src="spiral.jpg" alt="Spiral Galaxy" class="w-full h-64 object-cover">
+                <div class="card-gradient rounded-2xl overflow-hidden shadow-xl animate-fade-in-up delay-200 fade-in-element">
+                    <img src="https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&amp;w=800&amp;q=80" alt="Spiral Galaxy" class="w-full h-64 object-cover" />
                     <div class="p-6">
-                        <h3 class="text-2xl font-semibold text-white mb-2">Spiral Galaxy</h3>
-                        <p class="text-gray-300">The majestic arms of a spiral galaxy, billions of light-years away.</p>
+                        <h3 class="text-2xl font-semibold text-white mb-2">Random HR</h3>
+                        <p class="text-gray-300">-Random rank</p>
                     </div>
                 </div>
-                <div class="card-gradient rounded-2xl overflow-hidden shadow-xl hover:scale-105 transition duration-300">
-                    <img src="exop.jpg" alt="Exoplanet Surface" class="w-full h-64 object-cover">
+                <div class="card-gradient rounded-2xl overflow-hidden shadow-xl animate-fade-in-up delay-300 fade-in-element">
+                    <img src="https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&amp;w=800&amp;q=80" alt="Engineer" class="w-full h-64 object-cover" />
                     <div class="p-6">
-                        <h3 class="text-2xl font-semibold text-white mb-2">Exoplanet Surface</h3>
-                        <p class="text-gray-300">An artist's rendition of a newly discovered exoplanet.</p>
+                        <h3 class="text-2xl font-semibold text-white mb-2">Idk HR</h3>
+                        <p class="text-300">-Some rank</p>
                     </div>
                 </div>
-                <div class="card-gradient rounded-2xl overflow-hidden shadow-xl hover:scale-105 transition duration-300">
-                    <img src="cluster.jpg" alt="Dazzling Star Cluster" class="w-full h-64 object-cover">
+                <div class="card-gradient rounded-2xl overflow-hidden shadow-xl animate-fade-in-up delay-400 fade-in-element">
+                    <img src="https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&amp;w=800&amp;q=80" alt="Coordinator" class="w-full h-64 object-cover" />
                     <div class="p-6">
-                        <h3 class="text-2xl font-semibold text-white mb-2">Dazzling Star Cluster</h3>
-                        <p class="text-gray-300">Thousands of stars bound together in a cosmic dance.</p>
+                        <h3 class="text-2xl font-semibold text-white mb-2">Someone Help This HR</h3>
+                        <p class="text-gray-300">-No rank but famous</p>
                     </div>
                 </div>
-                <div class="card-gradient rounded-2xl overflow-hidden shadow-xl hover:scale-105 transition duration-300">
-                    <img src="Aurora.jpg" alt="Celestial Aurora" class="w-full h-64 object-cover">
+                <div class="card-gradient rounded-2xl overflow-hidden shadow-xl animate-fade-in-up delay-400 fade-in-element">
+                    <img src="https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&amp;w=800&amp;q=80" alt="Coordinator" class="w-full h-64 object-cover" />
                     <div class="p-6">
-                        <h3 class="text-2xl font-semibold text-white mb-2">Celestial Aurora</h3>
-                        <p class="text-gray-300">The ethereal glow of an aurora, a natural light show.</p>
+                        <h3 class="text-2xl font-semibold text-white mb-2">Dumbest HR</h3>
+                        <p class="text-gray-300">-Mid</p>
                     </div>
                 </div>
-                <div class="card-gradient rounded-2xl overflow-hidden shadow-xl hover:scale-105 transition duration-300">
-                    <img src="horizon.jpg" alt="The Event Horizon" class="w-full h-64 object-cover">
+                <div class="card-gradient rounded-2xl overflow-hidden shadow-xl animate-fade-in-up delay-400 fade-in-element">
+                    <img src="https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&amp;w=800&amp;q=80" alt="Coordinator" class="w-full h-64 object-cover" />
                     <div class="p-6">
-                        <h3 class="text-2xl font-semibold text-white mb-2">The Event Horizon</h3>
-                        <p class="text-gray-300">Visualizing the enigmatic boundary of a black hole.</p>
+                        <h3 class="text-2xl font-semibold text-white mb-2">Lowest but HR</h3>
+                        <p class="text-gray-300">-LHR</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-<section id="contact" class="py-20 px-4 bg-gradient-to-b from-[#1A1A3A] to-[#0A0A1A]">
-    <div class="container mx-auto max-w-4xl text-center">
-        <h2 class="text-5xl font-bold text-white mb-12">Contact Us</h2>
-        <p class="text-xl text-gray-300 mb-8">
-            Have questions about the universe or our services? Reach out to us!
-        </p>
-        <div class="card-gradient p-8 rounded-2xl shadow-xl">
-            <form action="https://formsubmit.co/1859faba437acbab8d97a8240e792cdc" method="POST" class="space-y-6">
-                <div>
-                    <input type="text" name="name" placeholder="Your Name" class="w-full p-4 rounded-lg bg-gray-800 text-white border border-gray-700 focus:border-purple-500 focus:ring focus:ring-purple-500 focus:ring-opacity-50 transition duration-300" required>
+    <section id="upcoming-events" class="py-20 px-4 bg-gradient-to-b from-[#1A1A3A] to-[#0A0A1A]">
+        <div class="container mx-auto max-w-6xl">
+            <h2 class="text-5xl font-bold text-center text-white mb-16 animate-slide-in-top fade-in-element">Upcoming Events</h2>
+            <div class="flex flex-col md:flex-row items-center justify-between space-y-12 md:space-y-0 md:space-x-12">
+                <div class="md:w-1/2 card-gradient p-8 rounded-2xl shadow-xl animate-fade-in-left fade-in-element">
+                    <h3 class="text-3xl font-semibold text-white mb-4">Lunar Eclipse Observation Night</h3>
+                    <p class="text-lg leading-relaxed text-gray-300 mb-6">
+                        Join us for a spectacular evening to witness the upcoming total lunar eclipse! Our expert astronomers will guide you through the phases and explain the science behind this breathtaking celestial event. Telescopes will be provided for optimal viewing. Limited spots available, book your experience today!
+                    </p>
+                    <ul class="text-lg text-gray-300 list-disc list-inside space-y-2">
+                        <li>Date: June 20, 2025</li>
+                        <li>Time: 8:00 PM - 11:00 PM NPT</li>
+                        <li>Location: UMBRA Nova Observatory</li>
+                        <li>Admission: $25 (includes hot beverages)</li>
+                    </ul>
+                    <button class="button-glow text-white font-semibold py-3 px-8 rounded-full text-lg mt-8">Register Now</button>
                 </div>
-                <div>
-                    <input type="email" name="email" placeholder="Your Email" class="w-full p-4 rounded-lg bg-gray-800 text-white border border-gray-700 focus:border-purple-500 focus:ring focus:ring-purple-500 focus:ring-opacity-50 transition duration-300" required>
+                <div class="md:w-1/2 animate-fade-in-right fade-in-element">
+                    <img src="https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&amp;w=800&amp;q=80" alt="Lunar Eclipse" class="rounded-2xl shadow-2xl w-full h-auto object-cover" />
                 </div>
-                <div>
-                    <textarea name="message" placeholder="Your Message" rows="6" class="w-full p-4 rounded-lg bg-gray-800 text-white border border-gray-700 focus:border-purple-500 focus:ring focus:ring-purple-500 focus:ring-opacity-50 transition duration-300" required></textarea>
-                </div>
-                <button type="submit" class="button-glow text-white font-semibold py-4 px-10 rounded-full text-lg shadow-lg">
-                    Send Message
-                </button>
-                <input type="hidden" name="_next" value="https://umbranovaa.github.io/np/">
-                <input type="hidden" name="_captcha" value="false">
-                <input type="hidden" name="_cc" value="rizzmesigmaohio@gmail.com,nepalastronomyunion@gmail.com">
-            </form>
-            <p id="confirmationMessage" class="text-green-400 mt-6 hidden">✅ Message submitted successfully!</p>
+            </div>
         </div>
-    </div>
-</section>
+    </section>
 
-<footer class="bg-gray-900 bg-opacity-80 text-gray-400 py-8 text-center rounded-t-lg">
-    <div class="container mx-auto">
-        <div class="mb-4 flex justify-center items-center space-x-6">
-            <a href="https://www.instagram.com/umbranova.np/" target="_blank" class="hover:opacity-75 transition duration-300">
-                <img src="Instagram-Logo.wine.png" alt="UMBRA Nova Instagram" class="w-15 h-12">
-            </a>
-            <a href="https://www.tiktok.com/@umbranova.np?_t=ZS-8wdxn5OvKG0&_r=1" target="_blank" class="hover:opacity-75 transition duration-300">
-                <img src="tiktok-vse5tpq3thoiuk9tdhv82p.png" alt="UMBRA Nova TikTok" class="w-9 h-9">
-            </a>
+
+    <section id="contact" class="py-20 px-4 bg-gradient-to-b from-[#0A0A1A] to-[#1A1A3A]">
+        <div class="container mx-auto max-w-4xl text-center">
+            <h2 class="text-5xl font-bold text-white mb-12 animate-slide-in-top fade-in-element">Contact Us</h2>
+            <p class="text-xl text-gray-300 mb-8 animate-fade-in-up delay-200 fade-in-element">
+                Have questions about the universe or our services? Reach out to us!
+            </p>
+            <div class="card-gradient p-8 rounded-2xl shadow-xl animate-zoom-in fade-in-element">
+                <form action="https://formsubmit.co/1859faba437acbab8d97a8240e792cdc" method="POST" class="space-y-6">
+                    <div>
+                        <input type="text" name="name" placeholder="Your Name" class="w-full p-4 rounded-lg bg-gray-800 text-white border border-gray-700 focus:border-purple-500 focus:ring focus:ring-purple-500 focus:ring-opacity-50 transition duration-300" required />
+                    </div>
+                    <div>
+                        <input type="email" name="email" placeholder="Your Email" class="w-full p-4 rounded-lg bg-gray-800 text-white border border-gray-700 focus:border-purple-500 focus:ring focus:ring-purple-500 focus:ring-opacity-50 transition duration-300" required />
+                    </div>
+                    <div>
+                        <textarea name="message" placeholder="Your Message" rows="6" class="w-full p-4 rounded-lg bg-gray-800 text-white border border-gray-700 focus:border-purple-500 focus:ring focus:ring-purple-500 focus:ring-opacity-50 transition duration-300" required></textarea>
+                    </div>
+                    <button type="submit" class="button-glow text-white font-semibold py-4 px-10 rounded-full text-lg shadow-lg">
+                        Send Message
+                    </button>
+                    <input type="hidden" name="_next" value="https://umbranovaa.github.io/np/" />
+                    <input type="hidden" name="_captcha" value="false" />
+                    <input type="hidden" name="_cc" value="rizzmesigmaohio@gmail.com,nepalastronomyunion@gmail.com" />
+                </form>
+                <p id="confirmationMessage" class="text-green-400 mt-6 hidden transition duration-300">✅ Message submitted successfully!</p>
+            </div>
         </div>
-        <p>&copy; 2025 UMBRA Nova. All rights reserved. Designed for cosmic exploration.</p>
-    </div>
-</footer>
+    </section>
 
-<script type="text/javascript" src="script.js"></script>
+    <footer class="bg-gray-900 bg-opacity-80 text-gray-400 py-8 text-center rounded-t-lg fade-in-element">
+        <div class="container mx-auto">
+            <div class="mb-4 flex justify-center items-center space-x-6">
+                <a href="https://www.instagram.com/umbranova.np/" target="_blank" class="hover:opacity-75 transition duration-300 transform hover:scale-110">
+                    <img src="https://cdn-icons-png.flaticon.com/512/733/733558.png" alt="UMBRA Nova Instagram" class="w-15 h-12" />
+                </a>
+                <a href="https://www.tiktok.com/@umbranova.np?_t=ZS-8wdxn5OvKG0&_r=1" target="_blank" class="hover:opacity-75 transition duration-300 transform hover:scale-110">
+                    <img src="https://cdn-icons-png.flaticon.com/512/3046/3046123.png" alt="UMBRA Nova TikTok" class="w-9 h-9" />
+                </a>
+            </div>
+            <p>&copy; 2025 UMBRA Nova. All rights reserved. Designed for cosmic exploration.</p>
+        </div>
+    </footer>
+
+    <script>
+      // Smooth scrolling for nav links
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+          anchor.addEventListener('click', function (e) {
+              e.preventDefault();
+              const targetId = this.getAttribute('href');
+              const targetElement = document.querySelector(targetId);
+              if (targetElement) {
+                  targetElement.scrollIntoView({
+                      behavior: 'smooth'
+                  });
+              }
+          });
+      });
+
+      // Mobile menu toggle
+      const menuButton = document.getElementById('mobile-menu-button');
+      const mobileMenu = document.getElementById('mobile-menu');
+      const mobileMenuCloseButton = document.getElementById('mobile-menu-close-button');
+
+      menuButton.addEventListener('click', () => {
+          mobileMenu.classList.remove('-right-full');
+          mobileMenu.classList.add('right-0');
+      });
+
+      mobileMenuCloseButton.addEventListener('click', () => {
+          mobileMenu.classList.remove('right-0');
+          mobileMenu.classList.add('-right-full');
+      });
+
+      mobileMenu.querySelectorAll('a').forEach(link => {
+          link.addEventListener('click', () => {
+              mobileMenu.classList.remove('right-0');
+              mobileMenu.classList.add('-right-full');
+          });
+      });
+
+      // Disable right-click context menu
+      window.oncontextmenu = function () {
+          return false;
+      };
+
+      // Intersection Observer for fade-in animations on elements/boxes
+      document.addEventListener('DOMContentLoaded', () => {
+          const faders = document.querySelectorAll('.fade-in-element');
+          const appearOptions = { threshold: 0.1, rootMargin: '0px 0px -60px 0px' };
+
+          const observer = new IntersectionObserver((entries, observer) => {
+              entries.forEach(entry => {
+                  if (!entry.isIntersecting) return;
+                  entry.target.classList.add('show');
+                  observer.unobserve(entry.target);
+              });
+          }, appearOptions);
+
+          faders.forEach(fader => observer.observe(fader));
+
+          // Contact form submission handling
+          const form = document.querySelector('form[action^="https://formsubmit.co/"]');
+          const confirmation = document.getElementById('confirmationMessage');
+
+          if (form && confirmation) {
+              form.addEventListener('submit', async (e) => {
+                  e.preventDefault();
+                  const formData = new FormData(form);
+                  const action = form.getAttribute('action');
+
+                  try {
+                      const response = await fetch(action, { method: 'POST', body: formData });
+                      if (response.ok) {
+                          form.reset();
+                          confirmation.classList.remove('hidden');
+                          setTimeout(() => confirmation.classList.add('hidden'), 5000);
+                      } else {
+                          alert("❌ Failed to send message. Please try again later.");
+                      }
+                  } catch {
+                      alert("❌ Network error. Please try again later.");
+                  }
+              });
+          }
+
+          // Generate parallax stars
+          const parallaxStarsContainer = document.querySelector('.parallax-stars');
+          const numberOfStars = 100; // Adjust as needed
+
+          for (let i = 0; i < numberOfStars; i++) {
+              const star = document.createElement('div');
+              star.classList.add('star');
+              const size = Math.random() * 3 + 1; // 1px to 4px
+              const x = Math.random() * 100; // 0% to 100% width
+              const y = Math.random() * 100; // 0% to 100% height
+              const delay = Math.random() * 4; // 0s to 4s animation delay
+              const duration = 3 + Math.random() * 5; // 3s to 8s animation duration
+
+              star.style.width = `${size}px`;
+              star.style.height = `${size}px`;
+              star.style.left = `${x}vw`;
+              star.style.top = `${y}vh`;
+              star.style.animationDelay = `${delay}s`;
+              star.style.animationDuration = `${duration}s`;
+              star.style.zIndex = Math.floor(Math.random() * 5) - 3; // Layers for subtle parallax
+              parallaxStarsContainer.appendChild(star);
+          }
+
+          // Parallax effect for stars on scroll
+          window.addEventListener('scroll', () => {
+              const scrolled = window.pageYOffset;
+              document.querySelectorAll('.star').forEach(star => {
+                  const zIndex = parseInt(star.style.zIndex);
+                  const speed = (zIndex + 3) * 0.1; // Adjust speed based on z-index
+                  star.style.transform = `translateY(-${scrolled * speed}px)`;
+              });
+          });
+      });
+    </script>
 </body>
 </html>
